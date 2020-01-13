@@ -3,44 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package insertionsort;
 
-import java.util.Arrays;
+import java.sql.Array;
 
 /**
  *
- * @author Elfar
+ * @author Elfarsisy
  */
-public class SelectionSort {
+public class InsertionSort {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //selection sort
         int array[] = new int[]{2, 1, 9, 7, 8, 15, 10, 4, 3, 5};
-        int min;
-        int temp;
-        for (int i = 0; i < array.length - 1; i++) {
-            System.out.print(i + "/");
-            min = i;
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < array[min]) {
-                    min = j;
-                }
-            }
-            temp = array[min];
-            array[min] = array[i];
-            array[i] = temp;
+        int key;
 
+        for (int j = 1; j < array.length; j++) {
+            System.out.print(j + "/");
+            key = array[j];
+            int i = j - 1;
+            while (i >=0 && key < array[i]) {
+                array[i + 1] = array[i];
+                i--;
+            }
+            array[i + 1] = key;
+            // print algorithm steps && state the array became on it  
             for (int k = 0; k < 10; k++) {
                 System.out.print(array[k]);
             }
             System.out.println("");
+
         }
+
+           print sorted array
         for (int x = 0; x < array.length; x++) {
             System.out.print(array[x]);
-
         }
 
     }
